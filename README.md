@@ -1,1 +1,173 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For E ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff4d6d,#ff99ac,#ffc2d1);
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+    color:white;
+    animation:fadeIn 2s ease;
+    padding:20px;
+}
+
+h1{
+    font-size:55px;
+    margin-bottom:15px;
+    text-shadow:0 0 20px white;
+}
+
+.name{
+    color:#fff700;
+    text-shadow:0 0 20px #fff700;
+}
+
+p{
+    font-size:22px;
+    margin-bottom:30px;
+}
+
+button{
+    padding:14px 35px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:#ff4d6d;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.4s;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#fff700;
+    color:black;
+}
+
+.message{
+    margin-top:30px;
+    font-size:28px;
+    display:none;
+    animation:show 1s ease;
+    text-shadow:0 0 15px white;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+    100%{
+        transform:translateY(-10vh) scale(1.5);
+        opacity:1;
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:scale(0.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hey <span class="name">MeeMee Lay</span> ❤️</h1>
+
+    <p>
+        ကိုကိုချစ်လား
+    </p>
+
+    <button onclick="showLove()">
+        Yes
+    </button>
+    <button onmouseover="moveButton()" id="No">
+        No 
+    </button>
+
+    <div class="message" id="loveMessage">
+        ကိုလည်း ချစ်တယ်နော်💕<br>
+        ကို
+    </div>
+</div>
+
+<script>
+function showLove(){
+    document.getElementById("loveMessage").style.display="block";
+}
+function moveButton(){
+
+    let btn = document.getElementById("No");
+
+    let x = Math.random() * 300;
+    let y = Math.random() * 200;
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+    btn.style.position = "absolute";
+}
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+2)+"s";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },5000);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+</html>
